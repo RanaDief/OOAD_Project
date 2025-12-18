@@ -11,6 +11,40 @@ The implementation follows OO principles using:
 - Inheritance: `UserAccount -> Student / Instructor / Administrator`
 - Associations: `Course` holds `TimeSlot`, `Prerequisite`, and registration lists; `Student` holds `Schedule`
 - A separate `Registration` entity to model many-to-many enrollment cleanly.
+##File Structure
+OOAD_Project/
+├── README.md
+└── src/
+    └── ocrs/
+        ├── app/
+        │   └── Main.java
+        │
+        ├── data/
+        │   └── DataStore.java
+        │
+        ├── model/
+        │   ├── Administrator.java
+        │   ├── Course.java
+        │   ├── Instructor.java
+        │   ├── Notification.java
+        │   ├── Prerequisite.java
+        │   ├── Registration.java
+        │   ├── RegistrationRules.java
+        │   ├── RegistrationStatus.java
+        │   ├── Schedule.java
+        │   ├── Semester.java
+        │   ├── Student.java
+        │   ├── TimeSlot.java
+        │   └── UserAccount.java
+        │
+        ├── service/
+        │   ├── AdminService.java
+        │   ├── AuthService.java
+        │   ├── CourseService.java
+        │   └── RegistrationService.java
+        │
+        └── ui/
+            └── ConsoleUI.java
 
 ## Setup / Run
 ### Requirements
