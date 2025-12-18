@@ -21,8 +21,10 @@ The implementation follows OO principles using:
 From the project root:
 ```bash
 javac -d out $(find src -name "*.java")
-java -cp out ocrs.app.Main
+java -cp out app.Main
 ```
+
+Seed data is defined in `src/data/DataStore.java` (`seedDemoData()`).
 
 ## Demo Accounts (seeded in code)
 - Admin: `admin@uni.edu` / `admin123`
@@ -34,4 +36,3 @@ java -cp out ocrs.app.Main
 - Rana Abdelhamid Dief — implementation (Phase 4 prototype) + console UI
 
 > Update these names/roles as needed to match your team.
-
