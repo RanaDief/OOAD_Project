@@ -43,42 +43,64 @@ The system simulates course registration processes for a university environment,
 ---
 
 ## 🏗️ Project Structure
-
-Phase4/
-├── out/ # Compiled output files
-│
+```
+Phase 4/
+├── out/                       # Compiled output files
 ├── src/
-│ ├── app/ # Application entry point
-│ │ └── Main.java
-│ │
-│ ├── ui/ # Console-based user interface
-│ │ └── ConsoleUI.java
-│ │
-│ ├── service/ # Business logic & use case services
-│ │ ├── AdminService.java
-│ │ ├── AuthService.java
-│ │ ├── CourseService.java
-│ │ └── RegistrationService.java
-│ │
-│ ├── data/ # Data storage & persistence layer
-│ │ └── DataStore.java
-│ │
-│ └── model/ # Domain models & core entities
-│ ├── UserAccount.java
-│ ├── Student.java
-│ ├── Instructor.java
-│ ├── Administrator.java
-│ ├── Course.java
-│ ├── Semester.java
-│ ├── Schedule.java
-│ ├── TimeSlot.java
-│ ├── Prerequisite.java
-│ ├── Registration.java
-│ ├── RegistrationStatus.java
-│ ├── RegistrationRules.java
-│ └── Notification.java
-│
+│   ├── app/                   # Application entry point
+│   │   └── Main.java
+│   ├── ui/                    # Console-based user interface
+│   │   └── ConsoleUI.java
+│   ├── service/               # Business logic & use case services
+│   │   ├── AdminService.java
+│   │   ├── AuthService.java
+│   │   ├── CourseService.java
+│   │   └── RegistrationService.java
+│   ├── data/                  # Data storage & persistence layer
+│   │   └── DataStore.java
+│   └── model/                 # Domain models & core entities
+│       ├── UserAccount.java
+│       ├── Student.java
+│       ├── Instructor.java
+│       ├── Administrator.java
+│       ├── Course.java
+│       ├── Semester.java
+│       ├── Schedule.java
+│       ├── TimeSlot.java
+│       ├── Prerequisite.java
+│       ├── Registration.java
+│       ├── RegistrationStatus.java
+│       ├── RegistrationRules.java
+│       └── Notification.java
 └── README.md
+```
+
+---
+
+## 🧩 Package Overview
+
+- **app/**  
+  Application entry point and system bootstrap.
+
+- **ui/**  
+  Console-based menu system handling all user interactions.
+
+- **service/**  
+  Core business logic implementing system use cases.
+
+- **model/**  
+  Domain entities based directly on UML design diagrams.
+
+- **data/**  
+  In-memory data storage simulating persistence.
+
+---
+
+## 🧠 Architecture Highlights
+- Layered architecture (UI → Service → Model → Data)
+- Strong adherence to OOP principles
+- Direct mapping from UML to code
+- Console-based prototype for Phase 4
 
 
 ---
@@ -97,27 +119,26 @@ Phase4/
 - Java JDK 17+ installed
 - Terminal or IDE (VS Code / IntelliJ)
 
-### Compile
+### Compile & Run
 ```bash
-javac Main.java
+cd "Phase 4"
+mkdir -p out
+javac -d out $(find src -name "*.java")
+java -cp out app.Main
+```
 
-📄 Documentation & UML
+---
 
-This repository is part of a multi-phase project:
+## 📄 Documentation & UML
+- Phase 1: Requirements & Use Case Analysis  
+- Phase 2: System Analysis & UML Modeling  
+- Phase 3: System Design & Detailed UML  
+- Phase 4: Implementation (this repository)  
 
-Phase 1: Requirements & Use Case Analysis
+All implemented classes directly map to the Design Class Diagram, Sequence Diagrams, and State Machine Diagrams produced in earlier phases.
 
-Phase 2: System Analysis & UML Modeling
+---
 
-Phase 3: System Design & Detailed UML
-
-Phase 4: Implementation (this repository)
-
-All implemented classes directly map to the Design Class Diagram, Sequence Diagrams, and State Machine Diagrams produced in earlier phases .
-
-👨‍👩‍👧‍👦 Team Members
-
-Name 1 – Rana Dief
-
-Name 2 – Basmala Salah
-
+## 👨‍👩‍👧‍👦 Team Members
+- Rana Dief  
+- Basmala Salah  
