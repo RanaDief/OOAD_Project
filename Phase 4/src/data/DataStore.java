@@ -1,48 +1,55 @@
 package data;
 
-import model.*;
-
 import java.time.DayOfWeek;
 import java.util.*;
+import model.*;
 
-/**
- * In-memory data store (Phase 4 prototype).
- * In a real system this would be replaced by DB repositories.
- */
+//In-memory data store
+
 public class DataStore {
-    private final Map<String, UserAccount> usersByEmail = new HashMap<>();
-    private final Map<String, Course> coursesByCode = new HashMap<>();
+    private final List<UserAccount> users = new ArrayList<>();
+    private final List<Course> courses = new ArrayList<>();
     private final RegistrationRules rules = new RegistrationRules();
 
     public RegistrationRules getRules() { return rules; }
 
-    public Collection<UserAccount> allUsers() { return Collections.unmodifiableCollection(usersByEmail.values()); }
-    public Collection<Course> allCourses() { return Collections.unmodifiableCollection(coursesByCode.values()); }
+    public Collection<UserAccount> allUsers() { return Collections.unmodifiableList(users); }
+    public Collection<Course> allCourses() { return Collections.unmodifiableList(courses); }
 
     public Optional<UserAccount> findUserByEmail(String email) {
         if (email == null) return Optional.empty();
-        return Optional.ofNullable(usersByEmail.get(email.toLowerCase()));
+        return users.stream()
+                .filter(u -> u.getEmail().equalsIgnoreCase(email))
+                .findFirst();
     }
 
     public void addUser(UserAccount u) {
-        usersByEmail.put(u.getEmail(), u);
+        removeUserByEmail(u.getEmail());
+        users.add(u);
     }
 
     public void removeUserByEmail(String email) {
-        if (email != null) usersByEmail.remove(email.toLowerCase());
+        if (email == null) return;
+        users.removeIf(u -> u.getEmail().equalsIgnoreCase(email));
     }
 
     public Optional<Course> findCourseByCode(String code) {
         if (code == null) return Optional.empty();
-        return Optional.ofNullable(coursesByCode.get(code.trim().toUpperCase()));
+        String normalized = code.trim().toUpperCase();
+        return courses.stream()
+                .filter(c -> c.getCode().equalsIgnoreCase(normalized))
+                .findFirst();
     }
 
     public void addCourse(Course c) {
-        coursesByCode.put(c.getCode(), c);
+        removeCourseByCode(c.getCode());
+        courses.add(c);
     }
 
     public void removeCourseByCode(String code) {
-        if (code != null) coursesByCode.remove(code.trim().toUpperCase());
+        if (code == null) return;
+        String normalized = code.trim().toUpperCase();
+        courses.removeIf(c -> c.getCode().equalsIgnoreCase(normalized));
     }
 
     /** Demo seed aligned with OCRS requirements (prereqs, capacity, conflicts). */
